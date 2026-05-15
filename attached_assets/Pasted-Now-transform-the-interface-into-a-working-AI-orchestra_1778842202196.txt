@@ -1,0 +1,130 @@
+Now transform the interface into a working AI orchestration experience.
+
+When the user clicks the “Generate Application” button:
+
+SIMULATE a real AI software development team workflow.
+
+========================
+APPLICATION FLOW
+========================
+
+1. User types an app idea.
+
+2. After clicking the button:
+- show animated loading states
+- simulate AI agents working in real-time
+- progressively update agent statuses
+- display realistic generation steps
+
+========================
+AI AGENT BEHAVIOR
+========================
+
+Create dynamic AI agent cards with live activity.
+
+Agents:
+- Scrum Master Senior
+- UI/UX Senior
+- Front-End Senior
+- Back-End Senior
+
+Each agent must:
+- animate independently
+- have changing statuses
+- show progress bars updating
+- display “thinking” behavior
+
+Example animated statuses:
+- “Analyzing project requirements...”
+- “Defining architecture...”
+- “Creating wireframes...”
+- “Generating React components...”
+- “Structuring APIs...”
+- “Preparing deployment strategy...”
+
+========================
+GENERATED OUTPUTS
+========================
+
+After loading, automatically populate tabs with generated content.
+
+ARCHITECTURE TAB:
+Generate:
+- recommended stack
+- database choice
+- deployment strategy
+- scalability notes
+- folder structure
+
+UI/UX TAB:
+Generate:
+- design system
+- user flow
+- page structure
+- typography
+- color palette
+- responsive strategy
+
+FRONT-END TAB:
+Generate:
+- React component architecture
+- pages
+- reusable components
+- Tailwind structure
+- state management strategy
+
+BACK-END TAB:
+Generate:
+- API routes
+- authentication flow
+- database schema
+- backend architecture
+- security practices
+
+DEPLOYMENT TAB:
+Generate:
+- hosting recommendations
+- CI/CD strategy
+- Docker setup
+- production checklist
+
+========================
+REALISTIC EXPERIENCE
+========================
+
+Add:
+- typing animations
+- terminal-style generation logs
+- smooth transitions
+- staggered updates
+- realistic delays between agents
+- loading skeletons
+- AI activity pulses
+
+========================
+MOCK AI GENERATION
+========================
+
+Use realistic fake/generated outputs for now.
+
+Do NOT connect to real AI APIs yet.
+
+The goal is to create the illusion of a fully autonomous AI software company.
+
+========================
+VISUAL EXPERIENCE
+========================
+
+Everything should feel:
+- cinematic
+- premium
+- futuristic
+- alive
+- intelligent
+
+Inspired by:
+- Cursor
+- Vercel
+- Linear
+- OpenAI
+- Devin AI
