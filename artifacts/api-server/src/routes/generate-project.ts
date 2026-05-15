@@ -127,13 +127,16 @@ CRITICAL RULES — failure to follow these will break the app:
       config: { maxOutputTokens: 8192, responseMimeType: "application/json" },
     });
 
-    const raw = response.text ?? "";
+    let raw = response.text ?? "";
+
+    // Limpa possíveis blocos de código markdown que a IA possa ter retornado
+    raw = raw.replace(/^```json\s*/, "").replace(/\s*```$/, "").trim();
 
     let result: unknown;
     try {
       result = JSON.parse(raw);
     } catch {
-      req.log.error({ raw: raw.slice(0, 500) }, "Failed to parse Gemini JSON for project");
+      req.log.error({ raw: raw.slice(0, 1000) }, "Failed to parse Gemini JSON for project");
       res.status(500).json({ error: "AI returned an unparseable response. Please try again." });
       return;
     }
