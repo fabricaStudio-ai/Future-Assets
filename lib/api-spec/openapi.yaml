@@ -28,6 +28,36 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /generate-project:
+    post:
+      operationId: generateProject
+      tags: [generate]
+      summary: Generate a full project file structure from an idea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateProjectInput"
+      responses:
+        "200":
+          description: Generated project with files
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateProjectOutput"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateError"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateError"
   /generate:
     post:
       operationId: generateApp
@@ -393,3 +423,64 @@ components:
           type: string
       required:
         - error
+    GenerateProjectInput:
+      type: object
+      properties:
+        idea:
+          type: string
+        projectName:
+          type: string
+      required:
+        - idea
+    ProjectFile:
+      type: object
+      properties:
+        path:
+          type: string
+        content:
+          type: string
+      required:
+        - path
+        - content
+    ProjectStack:
+      type: object
+      properties:
+        frontend:
+          type: string
+        styling:
+          type: string
+        language:
+          type: string
+        database:
+          type: string
+        auth:
+          type: string
+        deployment:
+          type: string
+      required:
+        - frontend
+        - styling
+        - language
+        - database
+        - auth
+        - deployment
+    GenerateProjectOutput:
+      type: object
+      properties:
+        projectName:
+          type: string
+        stack:
+          $ref: "#/components/schemas/ProjectStack"
+        folders:
+          type: array
+          items:
+            type: string
+        files:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProjectFile"
+      required:
+        - projectName
+        - stack
+        - folders
+        - files

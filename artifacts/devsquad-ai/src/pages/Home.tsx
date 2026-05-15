@@ -20,6 +20,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
+import { IDE, type ProjectOutput } from "@/components/IDE";
 
 interface ScrumMasterOutput {
   projectScope: string;
@@ -108,6 +109,64 @@ export default function Home() {
     BASE_AGENTS.map((a) => ({ ...a, status: "idle", progress: 0 }))
   );
   const outputRef = useRef<HTMLDivElement>(null);
+  const ideRef = useRef<HTMLDivElement>(null);
+  const [project, setProject] = useState<ProjectOutput | null>(null);
+  const [ideGenerating, setIdeGenerating] = useState(false);
+  const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
+  const [showIDE, setShowIDE] = useState(false);
+
+  const generateProject = async (blueprint: GenerateAppOutput) => {
+    setIdeGenerating(true);
+    setShowIDE(true);
+    setTerminalLogs(["Initializing project..."]);
+    
+    const fakeLogs = [
+      "Creating folder structure...",
+      "Generating components...",
+      "Configuring TailwindCSS...",
+      "Setting up Supabase...",
+      "Generating API routes...",
+      "Writing types...",
+      "Finalizing configuration...",
+    ];
+    
+    let logIndex = 0;
+    const logInterval = setInterval(() => {
+      if (logIndex < fakeLogs.length) {
+        setTerminalLogs(prev => [...prev, fakeLogs[logIndex]]);
+        logIndex++;
+      } else {
+        clearInterval(logInterval);
+      }
+    }, 800);
+
+    setTimeout(() => {
+      ideRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+
+    try {
+      const res = await fetch("/api/generate-project", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idea: idea.trim(), blueprint }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to generate project files");
+      }
+
+      const projectData: ProjectOutput = await res.json();
+      
+      clearInterval(logInterval);
+      setTerminalLogs(prev => [...prev, "Project generated successfully!"]);
+      setProject(projectData);
+    } catch (err) {
+      clearInterval(logInterval);
+      setTerminalLogs(prev => [...prev, `Error: ${err instanceof Error ? err.message : "Unknown error"}`]);
+    } finally {
+      setIdeGenerating(false);
+    }
+  };
 
   const animateAgents = () => {
     const targets = [92, 67, 45, 31];
@@ -162,6 +221,9 @@ export default function Home() {
       setTimeout(() => {
         outputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 400);
+
+      // Phase 2: Generate Project Files
+      generateProject(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setAgents(BASE_AGENTS.map((a) => ({ ...a, status: "idle", progress: 0 })));
@@ -588,6 +650,69 @@ export default function Home() {
                   </div>
                 </Tabs>
               </Card>
+            </motion.section>
+          )}
+        </AnimatePresence>
+
+        {/* IDE Section */}
+        <AnimatePresence>
+          {showIDE && (
+            <motion.section
+              ref={ideRef}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.5 }}
+              className="mb-24"
+              data-testid="section-ide"
+            >
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-4">
+                  {ideGenerating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Code2 className="w-4 h-4" />}
+                  {ideGenerating ? "Building project files..." : "Project Ready"}
+                </div>
+                <h2 className="text-3xl font-bold mb-4">Interactive IDE</h2>
+                <p className="text-gray-400">View your generated project files in the built-in editor.</p>
+              </div>
+              <div className="relative rounded-xl overflow-hidden shadow-[0_0_50px_rgba(124,58,237,0.15)] border border-white/10">
+                {project ? (
+                  <IDE 
+                    project={project} 
+                    terminalLogs={terminalLogs} 
+                    isGenerating={ideGenerating} 
+                    onClose={() => setShowIDE(false)} 
+                  />
+                ) : (
+                  <div className="min-h-[80vh] flex flex-col w-full bg-[#0d1117]">
+                    <div className="h-12 bg-[#010409] border-b border-white/10 flex items-center px-4">
+                      <div className="w-48 h-4 bg-white/5 rounded animate-pulse" />
+                    </div>
+                    <div className="flex flex-1">
+                      <div className="w-[220px] bg-[#010409] border-r border-white/10 p-4">
+                        <div className="space-y-3">
+                          <div className="w-full h-4 bg-white/5 rounded animate-pulse" />
+                          <div className="w-3/4 h-4 bg-white/5 rounded animate-pulse" />
+                          <div className="w-5/6 h-4 bg-white/5 rounded animate-pulse" />
+                        </div>
+                      </div>
+                      <div className="flex-1 flex flex-col items-center justify-center relative">
+                        <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
+                        <p className="text-gray-400 font-mono text-sm">Generating workspace...</p>
+                        <div className="absolute bottom-0 left-0 w-full h-[200px] bg-[#0a0d14] border-t border-white/10 p-4">
+                          {terminalLogs.map((log, i) => (
+                            <div key={i} className="text-emerald-400 font-mono text-[13px] flex">
+                              <span className="text-gray-600 mr-3">❯</span>{log}
+                            </div>
+                          ))}
+                          <div className="text-emerald-400 font-mono text-[13px] flex">
+                            <span className="text-gray-600 mr-3">❯</span><span className="animate-pulse">_</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </motion.section>
           )}
         </AnimatePresence>

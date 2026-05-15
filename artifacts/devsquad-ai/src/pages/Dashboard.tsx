@@ -137,7 +137,7 @@ export default function Dashboard() {
               </div>
               <div className="flex items-end justify-between">
                 <div className="text-2xl font-bold text-primary">78%</div>
-                <Progress value={78} className="w-24 h-1.5 bg-white/10 mb-2" indicatorColor="bg-primary" />
+                <div className="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden mb-2"><div className="h-full bg-primary rounded-full" style={{ width: "78%" }} /></div>
               </div>
             </Card>
             <Card className="bg-white/5 border-white/10 p-4 hover:border-white/20 transition-colors">
@@ -176,7 +176,7 @@ export default function Dashboard() {
                     </div>
                     <div className="space-y-2">
                       <p className="text-sm text-gray-300">{agent.task}...</p>
-                      <Progress value={agent.progress} className="h-1 bg-white/10" indicatorColor={`bg-${agent.color.split('-')[1]}-500`} />
+                      <div className="h-1 bg-white/10 rounded-full overflow-hidden"><div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${agent.progress}%` }} /></div>
                     </div>
                   </Card>
                 ))}

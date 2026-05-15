@@ -18,6 +18,32 @@ export const HealthCheckResponse = zod.object({
 
 
 /**
+ * @summary Generate a full project file structure from an idea
+ */
+export const GenerateProjectBody = zod.object({
+  "idea": zod.string(),
+  "projectName": zod.string().optional()
+})
+
+export const GenerateProjectResponse = zod.object({
+  "projectName": zod.string(),
+  "stack": zod.object({
+  "frontend": zod.string(),
+  "styling": zod.string(),
+  "language": zod.string(),
+  "database": zod.string(),
+  "auth": zod.string(),
+  "deployment": zod.string()
+}),
+  "folders": zod.array(zod.string()),
+  "files": zod.array(zod.object({
+  "path": zod.string(),
+  "content": zod.string()
+}))
+})
+
+
+/**
  * @summary Generate application plan from an idea
  */
 export const GenerateAppBody = zod.object({

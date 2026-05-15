@@ -1,0 +1,144 @@
+Now transform the platform into a real AI project generator.
+
+========================
+PROJECT GENERATION ENGINE
+========================
+
+After the AI agents finish analyzing the app idea:
+
+Generate a REAL project structure dynamically.
+
+Create:
+- folder tree
+- files
+- components
+- pages
+- APIs
+- configuration files
+
+========================
+SUPPORTED STACK
+========================
+
+Default stack:
+- Next.js
+- React
+- TailwindCSS
+- TypeScript
+- Supabase
+
+========================
+GENERATE REAL FILES
+========================
+
+Generate realistic code files dynamically.
+
+Examples:
+- package.json
+- tailwind.config.ts
+- app/page.tsx
+- components/Navbar.tsx
+- components/Hero.tsx
+- lib/supabase.ts
+- api routes
+- hooks
+- types
+
+========================
+FILE EXPLORER UI
+========================
+
+Create a VSCode-style file explorer.
+
+Features:
+- collapsible folders
+- file icons
+- active file selection
+- code preview panel
+- tabs for opened files
+
+========================
+CODE PREVIEW
+========================
+
+When clicking files:
+- show generated code
+- syntax highlighting
+- line numbers
+- scrollable editor area
+
+========================
+AI FILE GENERATION FLOW
+========================
+
+The AI orchestration should:
+1. Analyze the idea
+2. Define architecture
+3. Generate folder structure
+4. Generate file contents
+5. Populate the editor dynamically
+
+========================
+PROJECT OUTPUT FORMAT
+========================
+
+Generate structured JSON:
+
+{
+  "projectName": "",
+  "stack": {},
+  "folders": [],
+  "files": [
+    {
+      "path": "",
+      "content": ""
+    }
+  ]
+}
+
+========================
+REALISTIC EXPERIENCE
+========================
+
+Add:
+- generation logs
+- terminal activity
+- “creating files...” animations
+- progress percentage
+- live file creation effect
+
+========================
+TERMINAL PANEL
+========================
+
+Create a bottom terminal panel showing logs like:
+
+> Initializing project...
+> Installing dependencies...
+> Creating components...
+> Configuring Tailwind...
+> Setting up Supabase...
+> Project generated successfully.
+
+========================
+EXPORT FEATURES
+========================
+
+Create buttons:
+- Open in StackBlitz
+- Export ZIP
+- Push to GitHub
+
+For now, simulate functionality visually.
+
+========================
+DESIGN
+========================
+
+The experience should feel like:
+- VSCode
+- Cursor
+- Replit
+- Devin AI
+
+Cinematic futuristic premium interface.

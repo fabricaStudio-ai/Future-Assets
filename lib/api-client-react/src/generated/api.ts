@@ -31,6 +31,8 @@ import type {
   GenerateAppInput,
   GenerateAppOutput,
   GenerateError,
+  GenerateProjectInput,
+  GenerateProjectOutput,
   HealthStatus
 } from './api.schemas';
 
@@ -123,6 +125,77 @@ export function useHealthCheck<TData = Awaited<ReturnType<typeof healthCheck>>, 
 
 
 
+
+export const getGenerateProjectUrl = () => {
+
+
+
+
+  return `/api/generate-project`
+}
+
+/**
+ * @summary Generate a full project file structure from an idea
+ */
+export const generateProject = async (generateProjectInput: GenerateProjectInput, options?: RequestInit): Promise<GenerateProjectOutput> => {
+
+  return customFetch<GenerateProjectOutput>(getGenerateProjectUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      generateProjectInput,)
+  }
+);}
+
+
+
+
+export const getGenerateProjectMutationOptions = <TError = ErrorType<GenerateError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateProject>>, TError,{data: BodyType<GenerateProjectInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof generateProject>>, TError,{data: BodyType<GenerateProjectInput>}, TContext> => {
+
+const mutationKey = ['generateProject'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof generateProject>>, {data: BodyType<GenerateProjectInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  generateProject(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type GenerateProjectMutationResult = NonNullable<Awaited<ReturnType<typeof generateProject>>>
+    export type GenerateProjectMutationBody = BodyType<GenerateProjectInput>
+    export type GenerateProjectMutationError = ErrorType<GenerateError>
+
+    /**
+ * @summary Generate a full project file structure from an idea
+ */
+export const useGenerateProject = <TError = ErrorType<GenerateError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof generateProject>>, TError,{data: BodyType<GenerateProjectInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof generateProject>>,
+        TError,
+        {data: BodyType<GenerateProjectInput>},
+        TContext
+      > => {
+      return useMutation(getGenerateProjectMutationOptions(options));
+    }
 
 export const getGenerateAppUrl = () => {
 

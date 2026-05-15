@@ -94,3 +94,29 @@ export interface GeminiError {
   error: string;
 }
 
+export interface GenerateProjectInput {
+  idea: string;
+  projectName?: string;
+}
+
+export interface ProjectFile {
+  path: string;
+  content: string;
+}
+
+export interface ProjectStack {
+  frontend: string;
+  styling: string;
+  language: string;
+  database: string;
+  auth: string;
+  deployment: string;
+}
+
+export interface GenerateProjectOutput {
+  projectName: string;
+  stack: ProjectStack;
+  folders: string[];
+  files: ProjectFile[];
+}
+
