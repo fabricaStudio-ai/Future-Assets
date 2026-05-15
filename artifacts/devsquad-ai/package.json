@@ -75,7 +75,10 @@
     "zod": "catalog:"
   },
   "dependencies": {
+    "@stackblitz/sdk": "^1.11.0",
+    "@types/jszip": "^3.4.1",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "jszip": "^3.10.1",
     "react-syntax-highlighter": "^16.1.1"
   }
 }
