@@ -1,0 +1,182 @@
+Create a modern futuristic SaaS web application called “DevSquad AI”.
+
+The platform is an AI software house where multiple senior AI agents collaborate to build applications automatically.
+
+STYLE:
+- Modern
+- Premium
+- Futuristic
+- Minimalist
+- Dark mode
+- Glassmorphism
+- Inspired by Linear, Vercel, Cursor and Notion
+- Smooth animations
+- Professional startup aesthetic
+- Responsive desktop/mobile
+
+COLOR PALETTE:
+- Background: #0B0F19
+- Cards: rgba(255,255,255,0.05)
+- Borders: rgba(255,255,255,0.08)
+- Primary: #7C3AED
+- Secondary: #06B6D4
+- Text: white and gray tones
+
+CREATE THESE SECTIONS:
+
+========================
+1. LANDING PAGE
+========================
+
+Hero section:
+- Big headline:
+“Your AI Software Development Team”
+
+Subtitle:
+“Describe your idea and let senior AI specialists architect, design and develop your application automatically.”
+
+Buttons:
+- Create App
+- Watch Demo
+
+Add futuristic glowing background effects.
+
+Create a mockup preview of the dashboard interface.
+
+========================
+2. FEATURES SECTION
+========================
+
+Create feature cards with icons:
+
+- AI Scrum Master
+- Senior UI/UX Designer
+- Senior Front-End Engineer
+- Senior Back-End Engineer
+- Automated Architecture
+- Stack Recommendation
+- Deploy Ready Projects
+
+Each card should have hover animations.
+
+========================
+3. WORKSPACE DASHBOARD
+========================
+
+Create an internal application workspace/dashboard.
+
+Layout:
+- Left sidebar
+- Top navigation
+- Main content area
+
+Sidebar items:
+- Dashboard
+- Projects
+- AI Team
+- Architecture
+- Deployments
+- Settings
+
+Topbar:
+- Project name
+- Search
+- User avatar
+- Notifications
+
+========================
+4. AI TEAM SECTION
+========================
+
+Create animated AI agent cards.
+
+Agents:
+1. Scrum Master Senior
+2. UI/UX Senior
+3. Front-End Senior
+4. Back-End Senior
+
+Each card must show:
+- Status indicator
+- Current task
+- Progress bar
+- Avatar/icon
+- Animated activity
+
+Example statuses:
+- “Analyzing requirements”
+- “Designing wireframes”
+- “Generating components”
+- “Structuring APIs”
+
+========================
+5. APP IDEA INPUT
+========================
+
+Create a large centered textarea where the user can describe the app idea.
+
+Placeholder:
+“Example: Create a food delivery app with admin dashboard and real-time order tracking.”
+
+Add a large glowing button:
+“Generate Application”
+
+========================
+6. GENERATED OUTPUT AREA
+========================
+
+Create tabs:
+
+- Architecture
+- UI/UX
+- Front-End
+- Back-End
+- Deployment
+
+Inside each tab create realistic mock content/code previews.
+
+Architecture tab:
+- Recommended stack
+- Database
+- Hosting
+- APIs
+
+UI/UX tab:
+- Wireframe previews
+- Design system
+- Colors
+- Typography
+
+Front-End tab:
+- Components
+- Pages
+- Responsive system
+
+Back-End tab:
+- API routes
+- Database schema
+- Authentication
+
+Deployment tab:
+- Vercel
+- Docker
+- CI/CD
+- Production checklist
+
+========================
+7. EXTRA DETAILS
+========================
+
+Add:
+- Smooth page transitions
+- Loading animations
+- Floating gradient effects
+- Modern typography
+- Rounded cards
+- Soft shadows
+- Professional spacing
+- Mobile responsive behavior
+
+Use React + Tailwind design patterns.
+
+The application should feel like a premium AI startup product worth billions.
